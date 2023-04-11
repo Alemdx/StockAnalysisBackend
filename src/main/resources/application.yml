@@ -1,0 +1,10 @@
+Spring:
+  datasource:
+    username: Jackson
+    password: 20010617Gc
+    url: jdbc:mysql:///STOCKANALYSIS
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+

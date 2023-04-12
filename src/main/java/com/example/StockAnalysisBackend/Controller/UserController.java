@@ -7,9 +7,13 @@ import com.example.StockAnalysisBackend.Jwt.PassToken;
 import com.example.StockAnalysisBackend.Jwt.UserLoginToken;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Alex
@@ -22,13 +26,15 @@ public class UserController {
     @PassToken
     @PostMapping("/login")
     @ApiOperation(value = "用户登录")
-    public String Login(String username ,String password) {
-         User user=new User();
-         user=loginServiceimpl.findUserByUserName(username);
+    //这种方式只能通过url传参
+    public Map<String, String> Login(String username ,String password) {
+        User user=new User();
+        user=loginServiceimpl.findUserByUserName(username);
         if (user.getPassword().equalsIgnoreCase(password)) {
             String token= JwtTokenUtils.sign(user);
-            System.out.println(token);
-            return token;
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            return response;
         }else{
             return null;
         }

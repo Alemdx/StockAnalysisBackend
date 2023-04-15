@@ -1,4 +1,4 @@
-package com.example.StockAnalysisBackend;
+package com.example.StockAnalysisBackend.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

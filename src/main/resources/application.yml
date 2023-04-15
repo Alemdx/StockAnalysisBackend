@@ -7,4 +7,10 @@ Spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  application:
+    name: User-service
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2001/eureka

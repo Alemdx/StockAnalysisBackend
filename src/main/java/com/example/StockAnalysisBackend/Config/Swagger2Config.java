@@ -1,4 +1,4 @@
-package com.example.StockAnalysisBackend;
+package com.example.StockAnalysisBackend.Config;
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

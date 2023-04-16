@@ -10,5 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface LoginService {
     User findUserByUserName(String username);
-    int  addUser(String username,String password);
+    int  addUser(String username,String password,String email);
+    int  updateUser(String username,String password);
 }

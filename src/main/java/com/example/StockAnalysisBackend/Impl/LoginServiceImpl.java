@@ -24,15 +24,25 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public int addUser(String username, String password) {
+    public int addUser(String username, String password,String email) {
          int code;
          User user=new User();
          String id=UUID.randomUUID().toString().replace("-", "").toLowerCase();
          user.setPassword(password);
          user.setUsername(username);
+         user.setEmail(email);
 //         System.out.println(id);
          user.setId(id);
          code=userMapper.addUser(user);
          return code;
+    }
+
+    @Override
+    public int updateUser(String username, String password) {
+        User user=new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        int code=userMapper.updateUser(user);
+        return code;
     }
 }

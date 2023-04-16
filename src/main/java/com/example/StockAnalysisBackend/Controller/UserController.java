@@ -5,7 +5,9 @@ import com.example.StockAnalysisBackend.Jwt.JwtTokenUtils;
 import com.example.StockAnalysisBackend.Service.LoginService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -16,6 +18,8 @@ import java.util.Map;
  * @date 下午4:40
  */
 @RestController
+@RequestMapping("/UserService")
+@CrossOrigin(origins = "*")
 public class UserController {
     @Autowired
     private LoginService loginService;
@@ -38,9 +42,15 @@ public class UserController {
     }
     @PostMapping("/register")
     @ApiOperation(value = "用户注册")
-    public int Register(String username ,String password){
-        return loginService.addUser(username, password);
+    public int Register(String username ,String password,String email){
+        return loginService.addUser(username, password,email);
     }
 
+    @PostMapping("/update")
+    @ApiOperation(value = "修改账户")
+    public int UpdateUser(String username,String password){
+        return loginService.updateUser(username,password);
+    }
 
+//    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMzQ1NiIsImV4cCI6MTY4MTU0NTAyNiwidXNlcm5hbWUiOiJBbGV4In0.nESIigCVPe6aAP1mraFoMSgQTCZUkA-wQyimDprF5cs
 }

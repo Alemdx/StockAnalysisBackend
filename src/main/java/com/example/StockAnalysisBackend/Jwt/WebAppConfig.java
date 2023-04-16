@@ -17,11 +17,13 @@ public class WebAppConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authHandlerInterceptor)
+        registry
+                .addInterceptor(authHandlerInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/swagger-resources/**")
                 .excludePathPatterns("/swagger-ui.html/**")
                 .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/login");
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/register");
     }
 }
